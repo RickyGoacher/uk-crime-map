@@ -8,10 +8,10 @@ export const getCrimeData = async (location:any) => {
     const NorthEastLng = location.northEast.lng;
     const SouthWestLat = location.southWest.lat;
     const SouthWestLng = location.southWest.lng;
-    const CenterLat = location.center.lat;
-    const CenterLng = location.center.lng;
+    const NorthWestLat = location.northWest.lat;
+    const NorthWestLng = location.northWest.lng;
 
-    const requestBuilt = NorthEastLat + ',' + NorthEastLng + ':' + CenterLat + ',' + CenterLng + ':' + SouthWestLat + ',' + SouthWestLng 
+    const requestBuilt = NorthEastLat + ',' + NorthEastLng + ':' + NorthWestLat + ',' + NorthWestLng + ':' + SouthWestLat + ',' + SouthWestLng 
 
     console.log(`https://data.police.uk/api/crimes-street/all-crime?poly=${requestBuilt}`)
 

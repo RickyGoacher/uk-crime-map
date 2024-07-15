@@ -18,3 +18,22 @@ export interface CrimeDataInterface {
     location_subtype: string;
     month: string;
 }
+
+export interface LocationInterface {
+    northEast: {
+        lat: number;
+        lng: number;
+    }
+    northWest: {
+        lat: number;
+        lng: number;
+    }
+    southWest: {
+        lat: number;
+        lng: number;
+    }
+    southEast: {
+        lat: number;
+        lng: number;
+    }
+}

@@ -3,18 +3,20 @@
 import { useState, useEffect } from "react";
 import { Marker, Popup } from 'react-leaflet';
 import {getCrimeData} from "@/api/police-data";
-import { CrimeDataInterface } from "@/app/App.types";
+import { CrimeDataInterface, LocationInterface } from "@/app/App.types";
 
-const MapMarkers = (props) => {
+interface PROPS {
+    props: LocationInterface
+}
 
-    console.log(props,' testing the prodps')
+const MapMarkers = ({props}:PROPS) => {
 
     const [getMarkerLocation, setMarkerLocation] = useState([{lat: 51.50735, lng: -0.12776}]);
     const [getCrimeInfo, setCrimeInfo] = useState<CrimeDataInterface[] | undefined>();
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-           getTheData(props.props);
+           getTheData(props);
         }
     },[props]) 
 
