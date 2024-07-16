@@ -16,7 +16,7 @@ const MapSearch = () => {
 
         leafletMap.addControl(searchControl);
 
-        return () => leafletMap.removeControl(searchControl)
+        return () => {leafletMap.removeControl(searchControl)}
         
     }, []);
 
