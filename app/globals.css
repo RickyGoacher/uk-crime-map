@@ -199,3 +199,9 @@ a {
 .leaflet-geosearch-button form button.reset::after {
   content: "Clear";
 }
+
+.leaflet-popup-content {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}

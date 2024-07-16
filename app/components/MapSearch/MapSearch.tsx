@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 const MapSearch = () => {
 
-    const leafletMap = useMap() // access to leaflet map
+    const leafletMap = useMap()
 
     useEffect(() => {
 
@@ -14,13 +14,13 @@ const MapSearch = () => {
 
         const searchControl:any = new GeoSearchControl({provider});
 
-        leafletMap.addControl(searchControl) // this is how you add a control in vanilla leaflet
+        leafletMap.addControl(searchControl);
 
         return () => leafletMap.removeControl(searchControl)
         
     }, []);
 
-    return null // don't want anything to show up from this comp
+    return null;
 
 }
 

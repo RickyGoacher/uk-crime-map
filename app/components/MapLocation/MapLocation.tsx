@@ -11,8 +11,12 @@ const MapLocation = () => {
 
     useEffect(() => {
         LeafletMap.locate().on("locationfound", function (e) {
+            console.log('this triggers')
             LeafletMap.locate();
         });
+        LeafletMap.addEventListener("moveend", () => {
+            console.log('move has ended')
+        })
     }, [LeafletMap]);
 
     const [getCurrentLocation, setCurrentLocation] = useState<LocationInterface>();
@@ -20,6 +24,19 @@ const MapLocation = () => {
     const map = useMapEvents({
     
         dragend(e) {
+            if(LeafletMap.getZoom() >= 15) {
+                setCurrentLocation(
+                    {
+                        northEast: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getEast()) },
+                        northWest: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getWest()) },
+                        southWest: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getWest()) },
+                        southEast: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getEast()) }
+                    }
+                );
+            }
+        },
+
+        moveend(e) {
             if(LeafletMap.getZoom() >= 15) {
                 setCurrentLocation(
                     {
@@ -45,6 +62,8 @@ const MapLocation = () => {
                 );
             }
         },
+
+        
     });
 
     return (

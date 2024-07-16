@@ -15,9 +15,13 @@ const MapMarkers = ({props}:PROPS) => {
     const [getCrimeInfo, setCrimeInfo] = useState<CrimeDataInterface[] | undefined>();
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-           getTheData(props);
-        }
+        const delayDebounceFn = setTimeout(async ()=> {
+            if (typeof window !== "undefined") {
+                getTheData(props);
+             }
+          }, 2000);
+
+          return () => clearTimeout(delayDebounceFn);
     },[props])
 
     async function getTheData (location:any) {
@@ -32,13 +36,16 @@ const MapMarkers = ({props}:PROPS) => {
     }
 
     const genMarkers = getMarkerLocation.map((item, index) => {
+
+        const Cat = getCrimeInfo !== undefined && getCrimeInfo[index]['category'].replace(/_|-/g, " ");
+
         return (
         <Marker key={index} position={[item.lat, item.lng]} draggable={false}>
             <Popup>
-                {getCrimeInfo !== undefined && getCrimeInfo[index]['category'] && <span>Category: {getCrimeInfo[index]['category']} </span>}
-                {getCrimeInfo !== undefined && getCrimeInfo[index].location && <span>Street: {getCrimeInfo[index].location.street.name} </span>}
-                {getCrimeInfo !== undefined && getCrimeInfo[index].outcome_status && <span>Outcome Status: {getCrimeInfo[index].outcome_status.category} </span>}
-                {getCrimeInfo !== undefined && getCrimeInfo[index].outcome_status && <span>{getCrimeInfo[index].outcome_status.date}</span>}
+                {getCrimeInfo !== undefined && Cat && <span><strong>Category:</strong> {Cat} </span>}
+                {getCrimeInfo !== undefined && getCrimeInfo[index].location && <span><strong>Street:</strong> {getCrimeInfo[index].location.street.name} </span>}
+                {getCrimeInfo !== undefined && getCrimeInfo[index].outcome_status && <span><strong>Outcome Status:</strong> {getCrimeInfo[index].outcome_status.category} </span>}
+                {getCrimeInfo !== undefined && getCrimeInfo[index].outcome_status && <span><strong>Date:</strong> {getCrimeInfo[index].outcome_status.date}</span>}
             </Popup>
         </Marker>
         );

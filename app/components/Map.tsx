@@ -21,8 +21,8 @@ const Map = () => {
     }, [getIsDefined]);
   
     return (
-      <>
-        <h1>Crime Map</h1>
+      <section className={classes['map-container']}>
+        <h1>UK Crime Map</h1>
         { getIsDefined &&
             <MapContainer className={classes["map"]}
                 center={{ lat: 52.629831, lng: -1.132503 }}
@@ -38,7 +38,12 @@ const Map = () => {
                 /> 
             </MapContainer>
         }
-      </>
+        <div className={classes["map-instructions"]}>
+            <h2>Instructions</h2>
+            <p>Use the search to locate a specifc area.</p>
+            <p>To view the crime data of a specific area zoom into the location.</p>
+        </div>
+      </section>
     );
 }
 
