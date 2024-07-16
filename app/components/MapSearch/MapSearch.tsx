@@ -12,7 +12,7 @@ const MapSearch = () => {
 
         const provider = new OpenStreetMapProvider();
 
-        const searchControl:any = new GeoSearchControl({provider});
+        const searchControl:any = new (GeoSearchControl as any)({provider});
 
         leafletMap.addControl(searchControl);
 
