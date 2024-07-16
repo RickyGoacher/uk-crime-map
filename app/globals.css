@@ -105,3 +105,97 @@ a {
     color-scheme: dark;
   }
 }
+
+.geosearch.leaflet-bar.leaflet-control.leaflet-control-geosearch.leaflet-geosearch-button {
+  border: 0;
+  display: flex;
+}
+
+.geosearch.leaflet-bar.leaflet-control.leaflet-control-geosearch.leaflet-geosearch-button.active form {
+  display: flex;
+}
+
+.leaflet-geosearch-button .leaflet-bar-part {
+  width: 35px !important;
+  height: 35px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1b4080;
+  border-left: solid 1px white;
+}
+
+.leaflet-geosearch-button .leaflet-bar-part::after {
+  content: "";
+  mask-image: url('images/magnifying-glass-solid.svg');
+  display: block;
+  width: 18px;
+  height: 18px;
+  mask-repeat: no-repeat;
+  background-color: white;
+}
+
+.leaflet-geosearch-button .leaflet-bar-part:hover {
+  background: #1b4080;
+}
+
+.leaflet-geosearch-button .leaflet-bar-part:focus {
+  background: #1b4080;
+}
+
+.geosearch.leaflet-bar.leaflet-control.leaflet-control-geosearch.leaflet-geosearch-button.active .leaflet-bar-part::after {
+  mask-image: url('images/square-xmark-solid.svg');
+  mask-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+
+.leaflet-geosearch-button form {
+  width: 250px;
+  display: none;
+}
+
+.leaflet-geosearch-button form.active {
+  display: flex;
+}
+
+.leaflet-geosearch-button form .results {
+  position: absolute;
+  top: 35px;
+  background-color: white;
+  max-width: 285px;
+}
+
+.leaflet-geosearch-button form .results div:nth-child(even) {
+  background-color: #d9edf7;
+}
+
+.leaflet-geosearch-button form .results > div {
+  padding: .5rem;
+  cursor: pointer;
+}
+
+.leaflet-geosearch-button form input {
+  padding: .5rem;
+  width: 89%;
+}
+
+.leaflet-geosearch-button form button {
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  background: #1b4080;
+  color: white;
+  border: 0;
+}
+
+.leaflet-geosearch-button form button:hover {
+  background: #1b4080;
+}
+
+.leaflet-geosearch-button form button.reset::after {
+  content: "Clear";
+}

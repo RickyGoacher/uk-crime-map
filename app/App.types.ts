@@ -1,5 +1,5 @@
 export interface CrimeDataInterface {
-    categroy: string;
+    category: string;
     location_type: string;
     location: {
         latitude: string;

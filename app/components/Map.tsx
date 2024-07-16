@@ -5,6 +5,7 @@ import 'leaflet-defaulticon-compatibility';
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { MapContainer, TileLayer} from 'react-leaflet';
 import { useState, useEffect } from "react";
+import MapSearch from "./MapSearch/MapSearch";
 import MapLocation from "./MapLocation/MapLocation";
 
 const Map = () => {
@@ -16,31 +17,29 @@ const Map = () => {
       if (typeof window !== "undefined") {
         setIsDefined(true);
       }
-      
-    }, [getIsDefined]) 
 
+    }, [getIsDefined]);
   
     return (
       <>
+        <h1>Crime Map</h1>
         { getIsDefined &&
-        <MapContainer className={classes["map"]}
-              center={{ lat: 52.629831, lng: -1.132503 }}
-              zoom={19}
-              scrollWheelZoom={false}
-              style={{ height: "100%", width: "100%" }}
-          >
-            <MapLocation />
-              <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-             
-          </MapContainer>
-  
+            <MapContainer className={classes["map"]}
+                center={{ lat: 52.629831, lng: -1.132503 }}
+                zoom={19}
+                scrollWheelZoom={false}
+                style={{ height: "100%", width: "100%" }}
+            >
+                <MapSearch />
+                <MapLocation />
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                /> 
+            </MapContainer>
         }
       </>
     );
-
 }
 
 export default Map;

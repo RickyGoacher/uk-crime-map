@@ -18,7 +18,7 @@ const MapMarkers = ({props}:PROPS) => {
         if (typeof window !== "undefined") {
            getTheData(props);
         }
-    },[props]) 
+    },[props])
 
     async function getTheData (location:any) {
   
@@ -27,7 +27,6 @@ const MapMarkers = ({props}:PROPS) => {
             return {lat: Number(item.location.latitude), lng: Number(item.location.longitude)}
         });
 
-        console.log(Locations, 'localles')
         setCrimeInfo(data);
         setMarkerLocation(Locations);
     }
@@ -36,7 +35,7 @@ const MapMarkers = ({props}:PROPS) => {
         return (
         <Marker key={index} position={[item.lat, item.lng]} draggable={false}>
             <Popup>
-                <span>Category: {getCrimeInfo !== undefined && getCrimeInfo[index].categroy} </span>
+                {getCrimeInfo !== undefined && getCrimeInfo[index]['category'] && <span>Category: {getCrimeInfo[index]['category']} </span>}
                 {getCrimeInfo !== undefined && getCrimeInfo[index].location && <span>Street: {getCrimeInfo[index].location.street.name} </span>}
                 {getCrimeInfo !== undefined && getCrimeInfo[index].outcome_status && <span>Outcome Status: {getCrimeInfo[index].outcome_status.category} </span>}
                 {getCrimeInfo !== undefined && getCrimeInfo[index].outcome_status && <span>{getCrimeInfo[index].outcome_status.date}</span>}

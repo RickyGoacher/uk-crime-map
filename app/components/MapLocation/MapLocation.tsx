@@ -20,26 +20,30 @@ const MapLocation = () => {
     const map = useMapEvents({
     
         dragend(e) {
-            setCurrentLocation(
-                {
-                    northEast: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getEast()) },
-                    northWest: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getWest()) },
-                    southWest: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getWest()) },
-                    southEast: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getEast()) }
-                }
-            );
+            if(LeafletMap.getZoom() >= 15) {
+                setCurrentLocation(
+                    {
+                        northEast: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getEast()) },
+                        northWest: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getWest()) },
+                        southWest: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getWest()) },
+                        southEast: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getEast()) }
+                    }
+                );
+            }
         },
 
         locationfound(e) {
-            LeafletMap.flyTo(e.latlng, map.getZoom())
-            setCurrentLocation(
-                {
-                    northEast: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getEast()) },
-                    northWest: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getWest()) },
-                    southWest: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getWest()) },
-                    southEast: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getEast()) }
-                }
-            );
+            LeafletMap.flyTo(e.latlng, LeafletMap.getZoom());
+            if(LeafletMap.getZoom() >= 15) {
+                setCurrentLocation(
+                    {
+                        northEast: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getEast()) },
+                        northWest: {lat: (e.target.getBounds().getNorth()), lng: (e.target.getBounds().getWest()) },
+                        southWest: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getWest()) },
+                        southEast: {lat: (e.target.getBounds().getSouth()), lng: (e.target.getBounds().getEast()) }
+                    }
+                );
+            }
         },
     });
 
