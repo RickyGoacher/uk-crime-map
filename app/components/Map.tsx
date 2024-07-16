@@ -40,8 +40,10 @@ const Map = () => {
         }
         <div className={classes["map-instructions"]}>
             <h2>Instructions</h2>
-            <p>Use the search to locate a specifc area.</p>
-            <p>To view the crime data of a specific area zoom into the location.</p>
+            <p> - Use the search to locate a specifc area.</p>
+            <p> - To view the crime data of a specific area zoom into the location.</p>
+            <p> - The information in the bottom left corner informs you if data is avaialable and your current zoom level.</p>
+            <p> - Select year and month, this defaults to latest if data is not available.</p>
         </div>
       </section>
     );

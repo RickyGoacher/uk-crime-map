@@ -74,7 +74,7 @@ const MapLocation = () => {
     return (
         <>
             <div className={classes["zoom-container"]}>
-                <span>{getCurrentZoom}</span> 
+                <span>Zoom: {Math.round(getCurrentZoom)}</span> 
                 {LeafletMap.getZoom() >= 15 && <span>Crime data available.</span>} 
                 {LeafletMap.getZoom() < 15 && <span>Zoom to load crime data.</span>}
             </div>
