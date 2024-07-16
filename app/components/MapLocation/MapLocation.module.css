@@ -1,0 +1,11 @@
+.zoom-container {
+    position: absolute;
+    bottom: 24px;
+    right: 12px;
+    background-color: #1b4080;
+    z-index: 10000;
+    color: white;
+    padding: .5rem;
+    display: flex;
+    gap: 6px;
+}
